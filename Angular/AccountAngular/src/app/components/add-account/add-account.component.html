@@ -1,0 +1,43 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <div class="form-group">
+    <label>Account Holder</label>
+    <input type="text" ngModel name="accountHolder" class="form-control" #accountHolder="ngModel" required>
+  </div>
+
+
+  <div class="form-group">
+    <label>Account Id</label>
+    <input type="text" ngModel name="accountId" class="form-control" #accountId="ngModel" required>
+  </div>
+  <br />
+  <br />
+  <hr />
+  <div class="form-group">
+    <label>Transaction Id</label>
+    <input type="text" ngModel name="transactionId" class="form-control" #transactionId="ngModel" required>
+    <label>Transaction Intiator</label>
+    <input type="text" ngModel name="transaction_inti" class="form-control" #transaction_inti="ngModel"
+      (change)="log(transaction_inti)" required>
+
+    <div class="form-group">
+      <button type="button" (click)="addTransaction(transactionId,transaction_inti)"
+        class="btn btn-danger btn-block">Add
+        Transaction</button>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-danger btn-block">Add Account</button>
+  </div>
+
+   <ul class="list-group">
+    <li class="list-group-item" *ngFor=" let transaction of transactionList" (click)="getTransactionDetails(transaction)"> {{ transaction.transaction_intitiator}}
+    </li>
+
+  </ul> 
+
+</form>
